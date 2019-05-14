@@ -1,0 +1,35 @@
+package zuoye;
+import java.io.*;
+public class Selector {
+	
+	public static void main(String[] args){
+		String student [];
+		int n = 0;
+		student = new String[100];
+		try{
+		FileReader fr = new FileReader("students.txt");
+		BufferedReader br = new BufferedReader(fr);
+		String c = br.readLine();
+		while(c!=null){
+			student[n]=c;
+			n++;
+			c=br.readLine();
+			
+		}
+		br.close();
+		fr.close();
+		FileWriter fw = new FileWriter("Selector.txt");
+		for(int i = n-1;i>=0;i--){
+			String line = student[i];
+			System.out.println(line);
+			line+="\r\n";
+			fw.write(line,0,line.length());
+		}
+		fw.close();
+		}
+		catch(IOException e){System.out.println(e);}
+		catch(RuntimeException a){System.out.println(a);}
+	}
+	
+	
+}
